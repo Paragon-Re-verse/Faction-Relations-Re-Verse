@@ -2,7 +2,7 @@
   "id": "faction-relations-reverse",
   "title": "Faction Relations Re:Verse",
   "description": "Overlay with a hex faction map and a character relationship graph. System-agnostic. GM can add/move/reveal nodes and manage links live.",
-  "version": "0.4.6",
+  "version": "0.0.1",
   "authors": [{ "name": "Paragon" }],
   "url": "https://github.com/Paragon-Re-verse/Faction-Relations-Re-Verse",
   "manifest": "https://github.com/Paragon-Re-verse/Faction-Relations-Re-Verse/releases/latest/download/module.json",
