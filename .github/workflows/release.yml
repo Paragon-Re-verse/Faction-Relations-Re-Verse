@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - module.json
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read module version
+        id: module
+        run: echo "version=$(jq -r .version module.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Build module.zip
+        run: zip -r module.zip . -x '.git/*' -x '.github/*' -x 'module.zip'
+
+      - name: Create/update release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ steps.module.outputs.version }}
+          name: v${{ steps.module.outputs.version }}
+          artifacts: "module.zip,module.json"
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
